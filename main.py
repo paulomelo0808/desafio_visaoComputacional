@@ -17,7 +17,6 @@ if not video.isOpened():
     raise SystemExit(1)
 
 largura_video = int(video.get(cv2.CAP_PROP_FRAME_WIDTH))
-
 linha_x = largura_video // 2
 
 kernel = cv2.getStructuringElement(
@@ -45,7 +44,6 @@ while True:
 
     if not sucesso:
         break
-
     numero_frame += 1
 
     hsv = cv2.cvtColor(
