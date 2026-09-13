@@ -1,7 +1,6 @@
 import cv2
 from pathlib import Path
 
-
 PASTA_TESTES = Path(__file__).resolve().parent
 PASTA_PROJETO = PASTA_TESTES.parent
 
@@ -99,6 +98,17 @@ while True:
                 2
             )
 
+            centro_x = x + largura // 2
+            centro_y = y + altura // 2
+
+            cv2.circle(
+                frame,
+                (centro_x, centro_y),
+                5,
+                (255, 0, 0),
+                -1
+            )
+
             cv2.putText(
                 frame,
                 f"A:{round(area)}",
@@ -119,8 +129,17 @@ while True:
         2
     )
 
-    saida.write(frame)
+    linha_x = int(largura_video * 0.70)
 
+    cv2.line(
+        frame,
+        (linha_x, 0),
+        (linha_x, altura_video),
+        (255, 255, 0),
+        2
+    )
+
+    saida.write(frame)
 
 video.release()
 saida.release()
